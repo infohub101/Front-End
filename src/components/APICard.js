@@ -7,7 +7,6 @@ const APICard = props => {
     console.log("props", props);
 
     const dispatch = useDispatch();
-
     const userID = window.localStorage.getItem('id');
 
     const handleSubmit = () => {
@@ -22,7 +21,9 @@ const APICard = props => {
     return (
         <Card>
             <CardBody>
+            <CardTitle>{props.category}</CardTitle>
             <CardTitle>{props.title}</CardTitle>
+            <CardTitle>{props.description}</CardTitle>
             <CardSubtitle className="img">{props.img}</CardSubtitle>
             <br/>
             <CardSubtitle className="url">{props.url}</CardSubtitle>
