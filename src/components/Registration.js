@@ -2,6 +2,7 @@ import React from "react";
 import useForm from "../hooks/useForm";
 import validate from "../utils/validateRegister";
 import axios from "axios";
+import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const Registration = props => {
     const { handleChange, handleSubmit, values, errors } = useForm(
@@ -24,18 +25,21 @@ const Registration = props => {
 
             .then(res => {
                 console.log("registration post response", res);
-                props.history.push("/");
+                props.history.push("/login");
             })
             .catch(error => {
                 console.log("registration post error", error);
             });
-        }
+    }
 
-        return (
-            <form onSubmit = {handleSubmit} noValidate>
-                <div>
-                    <label>Username</label>
-                        <input
+    return (
+        <Form onSubmit={handleSubmit} noValidate>
+            <Row>
+                <Col md="4" sm="4" xs="4"></Col>
+                <Col md="4" sm="4" xs="4">
+                    <FormGroup>
+                        <Label>Username</Label>
+                        <Input
                             name="username"
                             type="text"
                             placeholder="username"
@@ -43,10 +47,10 @@ const Registration = props => {
                             onChange={handleChange}
                         />
                         {errors.username && <p className="error">{errors.username}</p>}
-                </div>
-                <div>
-                    <label>Password</label>
-                        <input
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Password</Label>
+                        <Input
                             name="password"
                             type="password"
                             placeholder="password"
@@ -54,10 +58,10 @@ const Registration = props => {
                             onChange={handleChange}
                         />
                         {errors.password && <p className="error">{errors.password}</p>}
-                </div>
-                <div>
-                    <label>First Name</label>
-                        <input
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>First Name</Label>
+                        <Input
                             name="first_name"
                             type="text"
                             placeholder="first name"
@@ -65,10 +69,10 @@ const Registration = props => {
                             onChange={handleChange}
                         />
                         {errors.first_name && <p className="error">{errors.first_name}</p>}
-                </div>
-                <div>
-                    <label>Last Name</label>
-                        <input
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Last Name</Label>
+                        <Input
                             name="last_name"
                             type="text"
                             placeholder="last name"
@@ -76,10 +80,10 @@ const Registration = props => {
                             onChange={handleChange}
                         />
                         {errors.last_name && <p className="error">{errors.last_name}</p>}
-                </div>
-                <div>
-                    <label>Email</label>
-                        <input
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Email</Label>
+                        <Input
                             name="email"
                             type="email"
                             placeholder="email"
@@ -87,10 +91,13 @@ const Registration = props => {
                             onChange={handleChange}
                         />
                         {errors.email && <p className="error">{errors.email}</p>}
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-        );
+                    </FormGroup>
+                    <Button type="submit">Submit</Button>
+                </Col>
+                <Col md="4" sm="4" xs="4"></Col>
+            </Row>
+        </Form>
+    );
 };
 
 export default Registration;
