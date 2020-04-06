@@ -28,7 +28,6 @@ export const SettingsForm = props => {
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(editUserData(userID, profile))
-        dispatch(getUserData(userID));
         props.history.push('/settings');
     }
 

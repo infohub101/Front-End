@@ -8,12 +8,10 @@ export const DashboardCard = props => {
     console.log("DashboardCard props", props)
 
     const dispatch = useDispatch();
-    const history = useHistory();
-
+    
     const handleDelete = e => {
         e.preventDefault();
         dispatch(deletePost(props.id))
-        history.push('/profile')
     }
 
     return (

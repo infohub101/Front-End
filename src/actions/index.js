@@ -59,7 +59,7 @@ export const addPostData = userAPI => dispatch => {
   dispatch({ type: ADD_POST_START });
   console.log("addpost userapi", userAPI);
   axiosWithAuth()
-    .post(`/api/auth/apidatabase`, userAPI)
+    .post(`/api/auth/userapidatabase`, userAPI)
     .then(res => {
       console.log("addPostData POST response", res);
       dispatch({ type: ADD_POST_SUCCESS, payload: res.data});
@@ -67,10 +67,10 @@ export const addPostData = userAPI => dispatch => {
       .catch(err => console.log("POST add post error", err));
 };
 
-export const editUserData = id => dispatch => {
+export const editUserData = (id, data) => dispatch => {
   dispatch({ type: EDIT_USER_START });
   axiosWithAuth()
-    .put(`/api/auth/userdatabase/${id}`)
+    .put(`/api/auth/userdatabase/${id}`, data)
     .then(res => {
       console.log("editUserData PUT response", res);
       dispatch({ type: EDIT_USER_SUCCESS, payload: res.data});
@@ -81,10 +81,10 @@ export const editUserData = id => dispatch => {
 export const deletePost = (id, userAPI) => dispatch => {
   dispatch({ type: DELETE_POST_START });
   axiosWithAuth()
-    .delete(`/api/auth/apidatabase/${id}`, userAPI)
+    .delete(`/api/auth/userapidatabase/${id}`, userAPI)
     .then(res => {
       console.log("deletePost DELETE response", res);
-      dispatch({ type: DELETE_POST_SUCCESS, payload: res.data});
+      dispatch({ type: DELETE_POST_SUCCESS });
     })
     .catch(err => console.log("DELETE delete post error", err));
 }
