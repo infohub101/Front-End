@@ -96,7 +96,6 @@ export const reducer = (state = initialState, action) => {
         case DELETE_POST_SUCCESS:
             return{
                 ...state,
-                userPosts: action.payload,
                 isLoading: false,
                 error: ''
             }

@@ -10,14 +10,15 @@ const Dashboard = () => {
     const userID = window.localStorage.getItem('id');
 
     const isLoading = useSelector(state => state.isLoading)
+    const userPosts = useSelector(state => state.userPosts);
 
     useEffect(() => {
         dispatch(getUserPost(userID));
     },[isLoading])
 
-    const userPosts = useSelector(state => state.userPosts);
+   
 
-    console.log("userposts", userPosts);
+    console.log("userposts11", userPosts);
 
     return (
         <Row className="main-container">
@@ -40,14 +41,13 @@ const Dashboard = () => {
                 <Row className='main-containter-menu-post'>
                     <Col></Col>
                     <Col>
-                    {userPosts.map(userPosts => {
-                        console.log("userpost map", userPosts)
+                    {userPosts.map(posts => {
                         return <DashboardCard 
-                        key={userPosts.id} 
-                        id={userPosts.id}
-                        title={userPosts.title} 
-                        img={userPosts.img} 
-                        url={userPosts.url}
+                        key={posts.id} 
+                        id={posts.id}
+                        title={posts.title} 
+                        img={posts.img} 
+                        url={posts.url}
                         />
                     })}
                     </Col>
