@@ -25,10 +25,27 @@ const PostAddAPI = props => {
             <Col md="4"></Col>
             <Col md="4">
             <h2>Add Post</h2>
-                {apiPost.map(api => {
+
+            {/* News Category */}
+            <h2>News</h2>
+                {apiPost.filter(api => api.category === 'News').map(api => {
                 return <APICard
                         key = {api.id}
                         id = {api.id}
+                        category = {api.category}
+                        title = {api.title}
+                        img = {api.img}
+                        url = {api.url}
+                    />
+                })}
+            
+            {/* Social Category */}
+            <h2>Social</h2>
+                {apiPost.filter(api => api.category === 'Social').map(api => {
+                return <APICard
+                        key = {api.id}
+                        id = {api.id}
+                        category = {api.category}
                         title = {api.title}
                         img = {api.img}
                         url = {api.url}
