@@ -16,6 +16,8 @@ export const DELETE_POST_START = 'DELETE_POST_START';
 export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
 export const DELETE_USER_START = 'DELETE_USER_START';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';
 
 
 export const setUserID = user_id => dispatch => {
@@ -62,7 +64,7 @@ export const addPostData = userAPI => dispatch => {
     .post(`/api/auth/userapidatabase`, userAPI)
     .then(res => {
       console.log("addPostData POST response", res);
-      dispatch({ type: ADD_POST_SUCCESS, payload: res.data});
+      dispatch({ type: ADD_POST_SUCCESS});
       })
       .catch(err => console.log("POST add post error", err));
 };
@@ -100,7 +102,10 @@ export const deleteUser = id => dispatch => {
     .catch(err => console.log("DELETE delete user error", err));
 }
 
+export const logIn = () => dispatch => {
+  dispatch({ type: LOG_IN });
+};
+
 export const logOut = () => dispatch => {
-  window.localStorage.removeItem("token");
-  dispatch({ type: "LOG_OUT" });
+  dispatch({ type: LOG_OUT });
 };

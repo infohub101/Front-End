@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route } from "react-router-dom";
 import PrivateRoute from './utils/PrivateRoute';
-
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Registration from "./components/Registration";

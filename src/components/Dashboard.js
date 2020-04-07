@@ -15,7 +15,7 @@ const Dashboard = () => {
         dispatch(getUserPost(userID));
     },[isLoading])
 
-    console.log("userposts", userPosts);
+    console.log("This is Userposts", userPosts);
 
     return (
         <Row className="main-container">

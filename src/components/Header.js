@@ -1,23 +1,24 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { connect, useDispatch } from 'react-redux';
-import { logOut, getUserData } from '../actions';
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { Col, Nav, Media, Navbar } from "reactstrap";
+import { logIn, logOut } from '../actions';
 import NavLogo from '../img/infohub.png';
 
-const Header = props => {
+const Header = () => {
+    const isLoggedIn = useSelector(state => state.isLoggedIn);
     const dispatch = useDispatch();
-    const userID = window.localStorage.getItem('id');
+    console.log("islogged?", isLoggedIn)
 
-    useEffect(() => {
-        dispatch(getUserData(userID));
-        console.log("This is user", userID)
-    }, [props.isLoading])
+    const loggingOut = () => {
+        window.localStorage.removeItem('token');
+        window.localStorage.removeItem('id');
+        dispatch(logOut());
+    }
 
-    console.log("header props", props);
     return (
         <div>
-            {props.isLoggedIn ? (
+            {isLoggedIn ? (
                 <Navbar className="nav-container">
                     <Col></Col>
                     <Col>
@@ -29,7 +30,7 @@ const Header = props => {
                                 <Link to="/dashboard">Dashboard</Link>
                                 <Link to="/add-post">Add Post</Link>
                                 <Link to="/settings">Settings</Link>
-                                <Link to="/" onClick={props.logOut}>Log Out</Link>
+                                <Link to="/login" onClick={loggingOut}>Log Out</Link>
                             </Col>
                         </Nav>
                     </Col>
@@ -56,4 +57,4 @@ const Header = props => {
     );
 };
 
-export default connect(state => state, { logOut, getUserData })(Header);
+export default Header;
