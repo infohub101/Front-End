@@ -11,10 +11,14 @@ import {
     DELETE_POST_START,
     DELETE_POST_SUCCESS,
     DELETE_USER_START,
-    DELETE_USER_SUCCESS
+    DELETE_USER_SUCCESS,
+    LOG_IN,
+    LOG_OUT
+
 } from '../actions';
 
 const initialState = {
+    isLoggedIn: false,
     isLoading: false,
     token: '',
     error: '',
@@ -36,7 +40,7 @@ export const reducer = (state = initialState, action) => {
         case GET_ALL_API_START:
             return{
                 ...state,
-                isLoading: true
+                isLoading: true,
             }
         case GET_ALL_API_SUCCESS:
             return{
@@ -47,7 +51,7 @@ export const reducer = (state = initialState, action) => {
         case GET_USER_POST_START:
             return{
                 ...state,
-                isLoading: true
+                isLoading: true,
             }
         case GET_USER_POST_SUCCESS:
             return{
@@ -57,19 +61,18 @@ export const reducer = (state = initialState, action) => {
         case ADD_POST_START:
             return{
                 ...state,
-                isLoading: true
+                isLoading: true,
             }
         case ADD_POST_SUCCESS:
             return{
                 ...state,
-                userPosts: action.payload,
                 isLoading: false
             }
         case GET_USER_START:
             return{
                 ...state,
                 isLoading: true,
-                error: ''
+                error: '',
             }
         case GET_USER_SUCCESS:
             return{
@@ -105,7 +108,16 @@ export const reducer = (state = initialState, action) => {
                 user_id: action.payload,
                 isLoading: false
             }
-        
+        case LOG_IN:
+            return {
+                ...state,
+                isLoggedIn: true
+                }
+        case LOG_OUT:
+            return {
+                ...state,
+               
+            }
         default:
             return state;
     }

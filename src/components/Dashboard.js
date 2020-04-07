@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserPost } from "../actions";
 import { DashboardCard } from "./DashboardCard";
@@ -16,9 +15,7 @@ const Dashboard = () => {
         dispatch(getUserPost(userID));
     },[isLoading])
 
-   
-
-    console.log("userposts11", userPosts);
+    console.log("This is Userposts", userPosts);
 
     return (
         <Row className="main-container">
@@ -26,16 +23,6 @@ const Dashboard = () => {
             <Col>
             <div className='main-container-body'>
                 <div className='main-container-menu'>
-                    <p>Menu</p>
-                    <div className='main-container-menu-dashboard'>
-                        <NavLink to='/dashboard' className='main-container-menu-buttons'>Dashboard</NavLink>
-                    </div>
-                    <div className='main-container-menu-button-dashboard'>
-                        <NavLink to='/profile' className='main-container-menu-buttons'>Profile</NavLink>
-                    </div>
-                    <div className='main-container-menu-button-dashboard'>
-                        <NavLink to='/settings' className='main-container-menu-buttons'>Settings</NavLink>
-                    </div>
                 </div>
                 <br/>
                 <Row className='main-containter-menu-post'>

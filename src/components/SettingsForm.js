@@ -28,12 +28,13 @@ export const SettingsForm = props => {
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(editUserData(userID, profile))
+        dispatch(getUserData(userID));
         props.history.push('/settings');
     }
 
     const returnBack = e => {
         e.preventDefault();
-        props.history.push('/setting');
+        props.history.push('/settings');
     }
 
     return (
