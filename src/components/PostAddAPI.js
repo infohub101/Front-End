@@ -34,6 +34,7 @@ const PostAddAPI = props => {
                         id = {api.id}
                         category = {api.category}
                         title = {api.title}
+                        description = {api.description}
                         img = {api.img}
                         url = {api.url}
                     />
@@ -47,6 +48,7 @@ const PostAddAPI = props => {
                         id = {api.id}
                         category = {api.category}
                         title = {api.title}
+                        description = {api.description}
                         img = {api.img}
                         url = {api.url}
                     />
