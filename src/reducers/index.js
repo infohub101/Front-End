@@ -15,6 +15,7 @@ import {
 } from '../actions';
 
 const initialState = {
+    isLoggedIn: false,
     isLoading: false,
     token: '',
     error: '',
@@ -36,7 +37,7 @@ export const reducer = (state = initialState, action) => {
         case GET_ALL_API_START:
             return{
                 ...state,
-                isLoading: true
+                isLoading: true,
             }
         case GET_ALL_API_SUCCESS:
             return{
@@ -47,7 +48,8 @@ export const reducer = (state = initialState, action) => {
         case GET_USER_POST_START:
             return{
                 ...state,
-                isLoading: true
+                isLoading: true,
+                isLoggedIn: true
             }
         case GET_USER_POST_SUCCESS:
             return{
@@ -57,7 +59,7 @@ export const reducer = (state = initialState, action) => {
         case ADD_POST_START:
             return{
                 ...state,
-                isLoading: true
+                isLoading: true,
             }
         case ADD_POST_SUCCESS:
             return{
@@ -69,7 +71,7 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 isLoading: true,
-                error: ''
+                error: '',
             }
         case GET_USER_SUCCESS:
             return{
