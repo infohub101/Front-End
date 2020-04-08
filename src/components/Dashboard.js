@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserPost } from "../actions";
 import { DashboardCard } from "./DashboardCard";
-import axios from 'axios';
 import { Col, Row } from "reactstrap";
+import axios from 'axios'
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -11,37 +11,13 @@ const Dashboard = () => {
 
     const isLoading = useSelector(state => state.isLoading)
     const userPosts = useSelector(state => state.userPosts);
-    
-    const [info, setInfo] = useState({});
 
     useEffect(() => {
         dispatch(getUserPost(userID));
     },[isLoading])
 
-    console.log("This is Userposts", userPosts);
 
-    console.log("id", userPosts[0])
-
-    // return Promise.all(userPosts.filter(api => api.api_id === 2).map)(api => {
-    //     useEffect(() => {
-    //     axios .get(`https://api.nasa.gov/planetary/apod?api_key=edUvnOvPv51tQd9Wq4lgudnDa8tbK5AlvzBDTBMP&hd=true`)
-    //     .then(res => {
-    //                setInfo(res.data);
-    //                 console.log("setInfo",res);
-    //                         })
-    //          .catch(err => {
-    //                 console.log("Error with axios call", err);
-    //             });
-    //         }, []);
-    //     })
-    
-            console.log("info", info);
-            // return<DashboardCard 
-            //     title={info.data.title}
-            //     url= {info.data.url}
-            //     />
-
-    
+    const [article, setArticle] = useState()
 
     return (
         <Row className="main-container">
@@ -54,14 +30,19 @@ const Dashboard = () => {
                 <Row className='main-containter-menu-post'>
                     <Col></Col>
                     <Col>
-                    {userPosts.map(posts => {
-                        return <DashboardCard 
-                        key={posts.id} 
-                        id={posts.id}
-                        title={posts.title} 
-                        img={posts.img} 
-                        url={posts.url}
-                        />
+
+                    {/* API_ID 0 */}
+                    {userPosts.filter(api => api.api_id === 1).map(api => {
+                        console.log("apidddd",api)
+                        axios.get(`${api.url}`)
+                        .then(res => {
+                            console.log("RESSSS", res.data.articles[0].title)
+                            setArticle(res.data.articles[0].title)
+                        })
+                        .catch(err => console.log(err))
+                        return (
+                            <DashboardCard title = {article} id = {userPosts[0].id} />
+                        )
                     })}
                     </Col>
                 </Row> 

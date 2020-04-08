@@ -12,6 +12,7 @@ const APICard = props => {
     const handleSubmit = () => {
         dispatch(addPostData({
             user_id: userID,
+            api_id: props.apiID,
             category: props.category,
             title: props.title,
             description: props.description,

@@ -32,6 +32,7 @@ const PostAddAPI = props => {
                 return <APICard
                         key = {api.id}
                         id = {api.id}
+                        apiID = {api.api_id}
                         category = {api.category}
                         title = {api.title}
                         description = {api.description}
