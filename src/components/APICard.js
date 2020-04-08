@@ -30,7 +30,10 @@ const APICard = props => {
             <br/>
             <CardSubtitle className="url">{props.url}</CardSubtitle>
             <br/>
-            <Button onClick = {handleSubmit}>Add API</Button>
+            <Button 
+                onClick = {handleSubmit}
+                color={props.isSubmitted === 0 ? "primary" : "secondary"}
+                >Add API</Button>
             </CardBody>
         </Card>
     );
