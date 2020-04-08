@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from 'react-redux';
-import { logIn } from '../actions';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const initialCredentials = {
@@ -11,7 +9,6 @@ const initialCredentials = {
 };
 
 const Login = props => {
-    const dispatch = useDispatch();
     const [credentials, setCredentials] = useState(initialCredentials);
 
     const handleChange = e => {
@@ -23,7 +20,6 @@ const Login = props => {
 
     const login = e => {
         e.preventDefault();
-        dispatch(logIn());
         axios
             .post(
                 "https://infohub101.herokuapp.com/api/auth/login", credentials

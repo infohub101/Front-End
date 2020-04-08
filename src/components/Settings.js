@@ -18,9 +18,9 @@ export const Settings = props => {
             <Col>
             <div className='main-container-body'>
                 <div className='settings-cards-div'>
-                    {props.isLoading && (
+                    { 
                         <SettingsCard user={props.user}/>
-                    )}
+                    }
                 </div>
             </div>
             </Col>
