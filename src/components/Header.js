@@ -1,24 +1,22 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Nav, Media, Navbar } from "reactstrap";
-import { logIn, logOut } from '../actions';
+import { logOut } from '../actions';
 import NavLogo from '../img/infohub.png';
 
 const Header = () => {
     const isLoggedIn = useSelector(state => state.isLoggedIn);
     const dispatch = useDispatch();
-    console.log("islogged?", isLoggedIn)
 
     const loggingOut = () => {
         window.localStorage.removeItem('token');
         window.localStorage.removeItem('id');
         dispatch(logOut());
     }
-
     return (
         <div>
-            {isLoggedIn ? (
+            {(isLoggedIn) ? (
                 <Navbar className="nav-container">
                     <Col></Col>
                     <Col>

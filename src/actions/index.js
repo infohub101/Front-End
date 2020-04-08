@@ -102,8 +102,9 @@ export const deleteUser = id => dispatch => {
     .catch(err => console.log("DELETE delete user error", err));
 }
 
-export const logIn = () => dispatch => {
-  dispatch({ type: LOG_IN });
+export const logIn = status => dispatch => {
+  dispatch({ type: LOG_IN, payload: status });
+  
 };
 
 export const logOut = () => dispatch => {
