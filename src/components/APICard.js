@@ -24,7 +24,6 @@ const APICard = props => {
     return (
         <Card>
             <CardBody>
-            <CardTitle>{props.category}</CardTitle>
             <CardTitle>{props.title}</CardTitle>
             <CardTitle>{props.description}</CardTitle>
             <CardSubtitle className="img">{props.img}</CardSubtitle>

@@ -17,7 +17,7 @@ const Dashboard = () => {
     },[isLoading])
 
 
-    const [article, setArticle] = useState()
+    const [lottery, setLottery] = useState()
 
     return (
         <Row className="main-container">
@@ -32,16 +32,17 @@ const Dashboard = () => {
                     <Col>
 
                     {/* API_ID 0 */}
-                    {userPosts.filter(api => api.api_id === 1).map(api => {
-                        console.log("apidddd",api)
+                    {userPosts.filter(api => api.api_id === "E1").map(api => {
+                        console.log("E1 API",api)
                         axios.get(`${api.url}`)
                         .then(res => {
                             console.log("RESSSS", res.data.articles[0].title)
-                            setArticle(res.data.articles[0].title)
+                            // setLottery(res.data.articles[0].title)
                         })
                         .catch(err => console.log(err))
                         return (
-                            <DashboardCard title = {article} id = {userPosts[0].id} />
+                            <div></div>
+                            // <DashboardCard title = {article} id = {userPosts[0].id} />
                         )
                     })}
                     </Col>

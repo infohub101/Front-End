@@ -54,6 +54,21 @@ const PostAddAPI = props => {
                         url = {api.url}
                     />
                 })}
+
+             {/* Entertainment Category */}
+             <h2>Entertainment</h2>
+                {apiPost.filter(api => api.category === 'Entertainment').map(api => {
+                    console.log("API POST", api)
+                return <APICard
+                        key = {api.id}
+                        id = {api.id}
+                        category = {api.category}
+                        title = {api.title}
+                        description = {api.description}
+                        img = {api.img}
+                        url = {api.url}
+                    />
+                })}               
             <br/>
             <Button onClick={returnBack}>Go Back</Button>
             </Col>
