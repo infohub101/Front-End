@@ -11,16 +11,27 @@ import {
     DELETE_POST_START,
     DELETE_POST_SUCCESS,
     DELETE_USER_START,
-    DELETE_USER_SUCCESS
+    DELETE_USER_SUCCESS,
+    ADD_LOTTERY_API_START,
+    ADD_LOTTERY_API_SUCCESS,
+    LOG_IN,
+    LOG_OUT
+
 } from '../actions';
 
 const initialState = {
+    isLoggedIn: false,
     isLoading: false,
     token: '',
     error: '',
     userID: 0,
     posts: [],
     userPosts: [],
+    lotteryAPI: {
+        prizes: {
+            values: [{values: ''}]
+        }
+    },
     user: {
         id: 0,
         username: '',
@@ -36,77 +47,104 @@ export const reducer = (state = initialState, action) => {
         case GET_ALL_API_START:
             return{
                 ...state,
-                isLoading: true
+                isLoading: true,
+                isLoggedIn: true
             }
         case GET_ALL_API_SUCCESS:
             return{
                 ...state,
                 posts: action.payload,
-                isLoading: false
+                isLoading: false,
+                isLoggedIn: true
             }
         case GET_USER_POST_START:
             return{
                 ...state,
-                isLoading: true
+                isLoading: true,
+                isLoggedIn: true
             }
         case GET_USER_POST_SUCCESS:
             return{
                 ...state,
-                userPosts: action.payload
+                userPosts: action.payload,
+                isLoggedIn: true
             }
         case ADD_POST_START:
             return{
                 ...state,
-                isLoading: true
+                isLoading: true,
+                isLoggedIn: true
             }
         case ADD_POST_SUCCESS:
             return{
                 ...state,
-                userPosts: action.payload,
-                isLoading: false
+                isLoading: false,
+                isLoggedIn: true
             }
         case GET_USER_START:
             return{
                 ...state,
                 isLoading: true,
-                error: ''
+                isLoggedIn: true
             }
         case GET_USER_SUCCESS:
             return{
                 ...state,
                 user: action.payload,
                 isLoading: false,
-                error: ''
+                isLoggedIn: true
             }
         case DELETE_USER_START:
             return{
                 ...state,
-                isLoading: true
+                isLoading: true,
+                isLoggedIn: true
             }
         case DELETE_USER_SUCCESS:
             return{
                 ...state,
-                isLoading: false
+                isLoading: false,
+                isLoggedIn: true
             }
         case DELETE_POST_START:
             return{
                 ...state,
                 isLoading: true,
+                isLoggedIn: true
             }
         case DELETE_POST_SUCCESS:
             return{
                 ...state,
-                userPosts: action.payload,
                 isLoading: false,
-                error: ''
+                isLoggedIn: true
             }
         case SET_USER_ID:
             return {
                 ...state,
                 user_id: action.payload,
-                isLoading: false
+                isLoading: false,
+                isLoggedIn: true
             }
-        
+        case ADD_LOTTERY_API_START:
+            return {
+                ...state,
+            }    
+        case ADD_LOTTERY_API_SUCCESS:
+            return {
+                ...state,
+                lotteryAPI: action.payload,
+            }    
+        case LOG_IN:
+            return {
+                ...state,
+                isLoggedIn: action.payload
+                }
+        case LOG_OUT:
+            return {
+                ...state,
+                isLoggedIn: false
+               
+            }
         default:
             return state;
     }

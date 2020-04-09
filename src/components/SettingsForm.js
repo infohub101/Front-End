@@ -34,7 +34,7 @@ export const SettingsForm = props => {
 
     const returnBack = e => {
         e.preventDefault();
-        props.history.push('/setting');
+        props.history.push('/settings');
     }
 
     return (
