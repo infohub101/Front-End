@@ -1,4 +1,5 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from 'axios';
 
 export const SET_USER_ID = 'SET_USER_ID';
 
@@ -16,6 +17,8 @@ export const DELETE_POST_START = 'DELETE_POST_START';
 export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
 export const DELETE_USER_START = 'DELETE_USER_START';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+export const ADD_LOTTERY_API_START = 'ADD_LOTTERY_API_START';
+export const ADD_LOTTERY_API_SUCCESS = 'ADD_LOTTERY_API_SUCCESS';
 export const LOG_IN = 'LOG_IN';
 export const LOG_OUT = 'LOG_OUT';
 
@@ -101,6 +104,18 @@ export const deleteUser = id => dispatch => {
     })
     .catch(err => console.log("DELETE delete user error", err));
 }
+
+export const getLotteryAPI = url => dispatch => {
+  dispatch({ type: ADD_LOTTERY_API_START });
+  axios
+  .get(`${url}`)
+  .then(res => {
+    console.log("lotteryAPI res", res)
+    dispatch({ type: ADD_LOTTERY_API_SUCCESS, payload: res.data[1]});
+  })
+}
+
+
 
 export const logIn = status => dispatch => {
   dispatch({ type: LOG_IN, payload: status });

@@ -12,6 +12,8 @@ import {
     DELETE_POST_SUCCESS,
     DELETE_USER_START,
     DELETE_USER_SUCCESS,
+    ADD_LOTTERY_API_START,
+    ADD_LOTTERY_API_SUCCESS,
     LOG_IN,
     LOG_OUT
 
@@ -25,6 +27,11 @@ const initialState = {
     userID: 0,
     posts: [],
     userPosts: [],
+    lotteryAPI: {
+        prizes: {
+            values: [{values: ''}]
+        }
+    },
     user: {
         id: 0,
         username: '',
@@ -118,6 +125,15 @@ export const reducer = (state = initialState, action) => {
                 isLoading: false,
                 isLoggedIn: true
             }
+        case ADD_LOTTERY_API_START:
+            return {
+                ...state,
+            }    
+        case ADD_LOTTERY_API_SUCCESS:
+            return {
+                ...state,
+                lotteryAPI: action.payload,
+            }    
         case LOG_IN:
             return {
                 ...state,
