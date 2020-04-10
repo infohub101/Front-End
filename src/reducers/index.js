@@ -73,13 +73,13 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 isLoading: true,
-                isLoggedIn: true
+                isLoggedIn: true,
             }
         case ADD_POST_SUCCESS:
             return{
                 ...state,
                 isLoading: false,
-                isLoggedIn: true
+                isLoggedIn: true,
             }
         case GET_USER_START:
             return{
