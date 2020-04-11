@@ -17,7 +17,8 @@ const APICard = props => {
             title: props.title,
             description: props.description,
             img: props.img,
-            url: props.url
+            url: props.url,
+            status: "added"
         }));
     }
 

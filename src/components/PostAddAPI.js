@@ -1,24 +1,29 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAPIData } from '../actions';
+import { getAPIData, getUserPost } from '../actions';
 import APICard from './APICard';
 import { Row, Col, Button } from 'reactstrap';
 
 const PostAddAPI = props => {
-
     const dispatch = useDispatch();
+    const userID = window.localStorage.getItem('id');
 
     useEffect(() => {
         dispatch(getAPIData());
+        dispatch(getUserPost(userID));
     }, [props.isLoading])
 
     const apiPost = useSelector(state => state.posts);
+    const userPosts = useSelector(state => state.userPosts);
     console.log("apiPost", apiPost);
+    console.log("userPosts", userPosts);
 
     const returnBack = e => {
         e.preventDefault();
         props.history.push('/profile');
     }
+
+ 
 
     return(
         <Row>
@@ -28,7 +33,7 @@ const PostAddAPI = props => {
 
             {/* News Category */}
             <h2>News</h2>
-                {apiPost.filter(api => api.category === 'News').map(api => {
+                {apiPost.filter(api => (api.category === 'News')).map(api => {
                 return <APICard
                         key = {api.id}
                         id = {api.id}
@@ -43,7 +48,7 @@ const PostAddAPI = props => {
             
             {/* Social Category */}
             <h2>Social</h2>
-                {apiPost.filter(api => api.category === 'Social').map(api => {
+                {apiPost.filter(api => (api.category === 'Social')).map(api => {
                 return <APICard
                         key = {api.id}
                         id = {api.id}
@@ -59,7 +64,6 @@ const PostAddAPI = props => {
              {/* Entertainment Category */}
              <h2>Entertainment</h2>
                 {apiPost.filter(api => api.category === 'Entertainment').map(api => {
-                    console.log("API POST", api)
                 return <APICard
                         key = {api.id}
                         id = {api.id}
