@@ -1,11 +1,12 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { addPostData } from '../actions';
 import { Card, CardTitle, CardBody, CardSubtitle, Button } from 'reactstrap';
 
 const APICard = props => {
     console.log("props", props);
-
+    const history = useHistory();
     const dispatch = useDispatch();
     const userID = window.localStorage.getItem('id');
 
@@ -20,6 +21,7 @@ const APICard = props => {
             url: props.url,
             status: "added"
         }));
+        history.push(`/dashboard/`);
     }
 
     return (
