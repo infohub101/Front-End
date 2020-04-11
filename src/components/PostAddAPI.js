@@ -12,6 +12,7 @@ const PostAddAPI = props => {
         dispatch(getAPIData());
         dispatch(getUserPost(userID));
     }, [props.isLoading])
+    
 
     const apiPost = useSelector(state => state.posts);
     const userPosts = useSelector(state => state.userPosts);
@@ -63,7 +64,7 @@ const PostAddAPI = props => {
 
              {/* Entertainment Category */}
              <h2>Entertainment</h2>
-                {apiPost.filter(api => api.category === 'Entertainment').map(api => {
+                {apiPost.filter(api => (api.category === 'Entertainment') && (!userPosts.some(up => up.title === api.title))).map(api => {
                 return <APICard
                         key = {api.id}
                         id = {api.id}
