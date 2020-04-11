@@ -29,6 +29,7 @@ const Login = props => {
                 window.localStorage.setItem("token", res.data.token);
                 window.localStorage.setItem("id", res.data.id);
                 props.history.push(`/dashboard/${res.data.hello}`);
+
             })
             .catch(err => console.log("login error", err));
         setCredentials(initialCredentials);

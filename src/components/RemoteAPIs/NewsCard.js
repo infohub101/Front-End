@@ -1,28 +1,22 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { deletePost } from '../actions';
+import { deletePost } from '../../actions';
 import { Card, CardTitle, CardBody, CardSubtitle, Button } from 'reactstrap';
 
-export const DashboardCard = props => {
-    console.log("DashboardCard props", props)
+export const NewsCard = props => {
+    console.log("NewsCard props", props)
 
     const dispatch = useDispatch();
-    const history = useHistory();
-
+    
     const handleDelete = e => {
         e.preventDefault();
         dispatch(deletePost(props.id))
-        history.push('/profile')
     }
 
     return (
         <Card>
             <CardBody>
-                <CardTitle>{props.title}</CardTitle>
-                <img src={props.img} className='postImg' />
-                <CardSubtitle>{props.url}</CardSubtitle>
-                <br />
+                <CardSubtitle>{props.newsAPI.description}</CardSubtitle>
                 <Button onClick={handleDelete}>Delete API</Button>
             </CardBody>
         </Card>

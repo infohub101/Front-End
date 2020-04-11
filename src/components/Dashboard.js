@@ -1,60 +1,54 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserPost } from "../actions";
-import { DashboardCard } from "./DashboardCard";
+import { getUserPost, getLotteryAPI, getNewsAPI } from "../actions";
+import { LotteryCard } from "./RemoteAPIs/LotteryCard";
+import { NewsCard } from "./RemoteAPIs/NewsCard";
 import { Col, Row } from "reactstrap";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
     const userID = window.localStorage.getItem('id');
-
+    const userPosts = useSelector(state => state.userPosts);
     const isLoading = useSelector(state => state.isLoading)
+
+    // APIs
+    const lotteryAPI = useSelector(state => state.lotteryAPI)
+    const newsAPI = useSelector(state => state.newsAPI)
+   
 
     useEffect(() => {
         dispatch(getUserPost(userID));
     },[isLoading])
 
-    const userPosts = useSelector(state => state.userPosts);
+    useEffect(() => {
+        userPosts.filter(posts => posts.api_id === "E1").map(userPosts => {
+            dispatch(getLotteryAPI(userPosts.url));     
+        })
+    },[userPosts])
 
-    console.log("userposts", userPosts);
+    useEffect(() => {
+        userPosts.filter(posts => posts.api_id === "N1").map(userPosts => {
+            dispatch(getNewsAPI(userPosts.url));     
+        })
+    },[userPosts])
 
     return (
         <Row className="main-container">
-            <Col></Col>
-            <Col>
-            <div className='main-container-body'>
-                <div className='main-container-menu'>
-                    <p>Menu</p>
-                    <div className='main-container-menu-dashboard'>
-                        <NavLink to='/dashboard' className='main-container-menu-buttons'>Dashboard</NavLink>
-                    </div>
-                    <div className='main-container-menu-button-dashboard'>
-                        <NavLink to='/profile' className='main-container-menu-buttons'>Profile</NavLink>
-                    </div>
-                    <div className='main-container-menu-button-dashboard'>
-                        <NavLink to='/settings' className='main-container-menu-buttons'>Settings</NavLink>
-                    </div>
-                </div>
-                <br/>
+            <Col/>
+            <Col className='main-container-body'>
                 <Row className='main-containter-menu-post'>
-                    <Col></Col>
-                    <Col>
-                    {userPosts.map(userPosts => {
-                        console.log("userpost map", userPosts)
-                        return <DashboardCard 
-                        key={userPosts.id} 
-                        id={userPosts.id}
-                        title={userPosts.title} 
-                        img={userPosts.img} 
-                        url={userPosts.url}
-                        />
+                    {/* Lottery API  */}
+                    {userPosts.filter(posts => posts.api_id === "E1").map(userPosts => {
+                        return <LotteryCard lotteryAPI = {lotteryAPI} id = {userPosts.id}/>
                     })}
-                    </Col>
+
+                    {/* News API  */}
+                    {userPosts.filter(posts => posts.api_id === "N1").map(userPosts => {
+                        return <NewsCard newsAPI = {newsAPI} id = {userPosts.id}/>
+                    })}
                 </Row> 
-            </div>
             </Col>
-            <Col></Col>
+            <Col/>
         </Row>
     );
 };
