@@ -12,6 +12,9 @@ import {
     DELETE_POST_SUCCESS,
     DELETE_USER_START,
     DELETE_USER_SUCCESS,
+
+    ADD_NEWS_API_START,
+    ADD_NEWS_API_SUCCESS, 
     ADD_LOTTERY_API_START,
     ADD_LOTTERY_API_SUCCESS,
     LOG_IN,
@@ -32,6 +35,7 @@ const initialState = {
             values: [{values: ''}]
         }
     },
+    newsAPI: [],
     user: {
         id: 0,
         username: '',
@@ -125,6 +129,19 @@ export const reducer = (state = initialState, action) => {
                 isLoading: false,
                 isLoggedIn: true
             }
+
+
+
+
+        case ADD_NEWS_API_START:
+            return {
+                ...state,
+            }    
+        case ADD_NEWS_API_SUCCESS:
+            return {
+                ...state,
+                newsAPI: action.payload,
+            }     
         case ADD_LOTTERY_API_START:
             return {
                 ...state,
