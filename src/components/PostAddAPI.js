@@ -5,17 +5,17 @@ import APICard from './APICard';
 import { Row, Col, Button } from 'reactstrap';
 
 const PostAddAPI = props => {
+console.log("POSTADD", props)
+
     const dispatch = useDispatch();
     const userID = window.localStorage.getItem('id');
+    const userPosts = useSelector(state => state.userPosts);
+    const apiPost = useSelector(state => state.posts);
 
     useEffect(() => {
         dispatch(getAPIData());
-        dispatch(getUserPost(userID));
-    }, [props.isLoading])
-    
-
-    const apiPost = useSelector(state => state.posts);
-    const userPosts = useSelector(state => state.userPosts);
+    }, [])
+  
     console.log("apiPost", apiPost);
     console.log("userPosts", userPosts);
 
@@ -23,8 +23,6 @@ const PostAddAPI = props => {
         e.preventDefault();
         props.history.push('/dashboard');
     }
-
- 
 
     return(
         <Row>
