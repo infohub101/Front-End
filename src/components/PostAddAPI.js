@@ -32,7 +32,7 @@ console.log("POSTADD", props)
 
             {/* News Category */}
             <h2>News</h2>
-                {apiPost.filter(api => (api.category === 'News')).map(api => {
+                {apiPost.filter(api => (api.category === 'News') && (!userPosts.some(up => up.title === api.title))).map(api => {
                 return <APICard
                         key = {api.id}
                         id = {api.id}

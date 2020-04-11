@@ -17,8 +17,13 @@ export const DELETE_POST_START = 'DELETE_POST_START';
 export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
 export const DELETE_USER_START = 'DELETE_USER_START';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+
+export const ADD_NEWS_API_START = 'ADD_NEWS_API_START';
+export const ADD_NEWS_API_SUCCESS = 'ADD_NEWS_API_SUCCESS';
 export const ADD_LOTTERY_API_START = 'ADD_LOTTERY_API_START';
 export const ADD_LOTTERY_API_SUCCESS = 'ADD_LOTTERY_API_SUCCESS';
+
+
 export const LOG_IN = 'LOG_IN';
 export const LOG_OUT = 'LOG_OUT';
 
@@ -105,6 +110,7 @@ export const deleteUser = id => dispatch => {
     .catch(err => console.log("DELETE delete user error", err));
 }
 
+//Lottery API
 export const getLotteryAPI = url => dispatch => {
   dispatch({ type: ADD_LOTTERY_API_START });
   axios
@@ -112,6 +118,17 @@ export const getLotteryAPI = url => dispatch => {
   .then(res => {
     console.log("lotteryAPI res", res)
     dispatch({ type: ADD_LOTTERY_API_SUCCESS, payload: res.data[1]});
+  })
+}
+
+// News API
+export const getNewsAPI = url => dispatch => {
+  dispatch({ type: ADD_NEWS_API_START });
+  axios
+  .get(`${url}`)
+  .then(res => {
+    console.log("NewsAPI res", res.data.articles[0])
+    dispatch({ type: ADD_NEWS_API_SUCCESS, payload: res.data.articles[0] });
   })
 }
 
