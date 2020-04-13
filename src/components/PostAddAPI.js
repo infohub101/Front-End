@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAPIData, getUserPost } from '../actions';
+import { getAPIData } from '../actions';
 import APICard from './APICard';
 import { Row, Col, Button } from 'reactstrap';
 
@@ -8,7 +8,6 @@ const PostAddAPI = props => {
 console.log("POSTADD", props)
 
     const dispatch = useDispatch();
-    const userID = window.localStorage.getItem('id');
     const userPosts = useSelector(state => state.userPosts);
     const apiPost = useSelector(state => state.posts);
 

@@ -127,8 +127,8 @@ export const getNewsAPI = url => dispatch => {
   axios
   .get(`${url}`)
   .then(res => {
-    console.log("NewsAPI res", res.data.articles[0])
-    dispatch({ type: ADD_NEWS_API_SUCCESS, payload: res.data.articles[0] });
+    console.log("NewsAPI res", res.data.articles)
+    dispatch({ type: ADD_NEWS_API_SUCCESS, payload: res.data.articles });
   })
 }
 
