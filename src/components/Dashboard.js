@@ -21,15 +21,15 @@ const Dashboard = () => {
     },[isLoading])
 
     useEffect(() => {
-        userPosts.filter(posts => posts.api_id === "E1").map(userPosts => {
-            dispatch(getLotteryAPI(userPosts.url));     
-        })
+        userPosts.filter(posts => posts.api_id === "E1").map(userPosts => (
+            dispatch(getLotteryAPI(userPosts.url))
+        ))
     },[userPosts])
 
     useEffect(() => {
-        userPosts.filter(posts => posts.api_id === "N1").map(userPosts => {
-            dispatch(getNewsAPI(userPosts.url));     
-        })
+        userPosts.filter(posts => posts.api_id === "N1").map(userPosts => (
+            dispatch(getNewsAPI(userPosts.url))     
+        ))
     },[userPosts])
 
     return (

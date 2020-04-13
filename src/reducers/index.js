@@ -32,7 +32,10 @@ const initialState = {
     userPosts: [],
     lotteryAPI: {
         prizes: {
-            values: [{values: ''}]
+            values: [{value: ''}]
+        },
+        results: {
+            values: [{value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}]
         }
     },
     newsAPI: [],
