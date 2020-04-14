@@ -18,6 +18,9 @@ export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
 export const DELETE_USER_START = 'DELETE_USER_START';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 
+//Remote APIs
+export const ADD_NASA_API_START = 'ADD_NASA_API_START';
+export const ADD_NASA_API_SUCCESS = 'ADD_NASA_API_SUCCESS';
 export const ADD_NEWS_API_START = 'ADD_NEWS_API_START';
 export const ADD_NEWS_API_SUCCESS = 'ADD_NEWS_API_SUCCESS';
 export const ADD_LOTTERY_API_START = 'ADD_LOTTERY_API_START';
@@ -115,10 +118,17 @@ export const getLotteryAPI = url => dispatch => {
   dispatch({ type: ADD_LOTTERY_API_START });
   axios
   .get(`${url}`)
-  .then(res => {
-    console.log("lotteryAPI res", res)
-    dispatch({ type: ADD_LOTTERY_API_SUCCESS, payload: res.data[1]});
-  })
+  .then(res => { dispatch({ type: ADD_LOTTERY_API_SUCCESS, payload: res.data[1]}); })
+  .catch(err => console.log("GET API error",err));
+}
+
+// NASA API
+export const getNasaAPI = url => dispatch => {
+  dispatch({ type: ADD_NASA_API_START });
+  axios
+  .get(`${url}`)
+  .then(res =>  { console.log("NASA GET response", typeof res.data);dispatch({ type: ADD_NASA_API_SUCCESS, payload: res.data }); })
+  .catch(err => console.log("GET API error",err));
 }
 
 // News API
@@ -126,13 +136,9 @@ export const getNewsAPI = url => dispatch => {
   dispatch({ type: ADD_NEWS_API_START });
   axios
   .get(`${url}`)
-  .then(res => {
-    console.log("NewsAPI res", res.data.articles)
-    dispatch({ type: ADD_NEWS_API_SUCCESS, payload: res.data.articles });
-  })
+  .then(res => { dispatch({ type: ADD_NEWS_API_SUCCESS, payload: res.data.articles }); })
+  .catch(err => console.log("GET API error",err));
 }
-
-
 
 export const logIn = status => dispatch => {
   dispatch({ type: LOG_IN, payload: status });

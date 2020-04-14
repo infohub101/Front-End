@@ -13,10 +13,14 @@ import {
     DELETE_USER_START,
     DELETE_USER_SUCCESS,
 
+    //Remote API Actions
+    ADD_NASA_API_START,
+    ADD_NASA_API_SUCCESS, 
     ADD_NEWS_API_START,
     ADD_NEWS_API_SUCCESS, 
     ADD_LOTTERY_API_START,
     ADD_LOTTERY_API_SUCCESS,
+
     LOG_IN,
     LOG_OUT
 
@@ -30,15 +34,6 @@ const initialState = {
     userID: 0,
     posts: [],
     userPosts: [],
-    lotteryAPI: {
-        prizes: {
-            values: [{value: ''}]
-        },
-        results: {
-            values: [{value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}]
-        }
-    },
-    newsAPI: [],
     user: {
         id: 0,
         username: '',
@@ -47,6 +42,18 @@ const initialState = {
         last_name: '',
         email: ''
     },
+
+    // APIs
+    lotteryAPI: {
+        prizes: {
+            values: [{value: ''}]
+        },
+        results: {
+            values: [{value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}]
+        }
+    },
+    nasaAPI: {},
+    newsAPI: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -136,15 +143,6 @@ export const reducer = (state = initialState, action) => {
 
 
 
-        case ADD_NEWS_API_START:
-            return {
-                ...state,
-            }    
-        case ADD_NEWS_API_SUCCESS:
-            return {
-                ...state,
-                newsAPI: action.payload,
-            }     
         case ADD_LOTTERY_API_START:
             return {
                 ...state,
@@ -153,7 +151,26 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 lotteryAPI: action.payload,
+            } 
+        case ADD_NASA_API_START:
+            return {
+                ...state,
             }    
+        case ADD_NASA_API_SUCCESS:
+            return {
+                ...state,
+                nasaAPI: action.payload,
+            }    
+        case ADD_NEWS_API_START:
+            return {
+                ...state,
+            }    
+        case ADD_NEWS_API_SUCCESS:
+            return {
+                ...state,
+                newsAPI: action.payload,
+            }
+
         case LOG_IN:
             return {
                 ...state,

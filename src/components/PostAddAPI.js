@@ -44,9 +44,9 @@ console.log("POSTADD", props)
                     />
                 })}
             
-            {/* Social Category */}
-            <h2>Social</h2>
-                {apiPost.filter(api => (api.category === 'Social')).map(api => {
+            {/* Education Category */}
+            <h2>Education</h2>
+                {apiPost.filter(api => (api.category === 'Education') && (!userPosts.some(up => up.title === api.title))).map(api => {
                 return <APICard
                         key = {api.id}
                         id = {api.id}
