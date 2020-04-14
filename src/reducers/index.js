@@ -20,6 +20,8 @@ import {
     ADD_NEWS_API_SUCCESS, 
     ADD_LOTTERY_API_START,
     ADD_LOTTERY_API_SUCCESS,
+    ADD_USCALENDER_API_START,
+    ADD_USCALENDER_API_SUCCESS,
 
     LOG_IN,
     LOG_OUT
@@ -54,6 +56,7 @@ const initialState = {
     },
     nasaAPI: {},
     newsAPI: [],
+    USCalenderAPI: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -169,6 +172,15 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 newsAPI: action.payload,
+            }
+        case ADD_USCALENDER_API_START:
+            return {
+                ...state,
+            }    
+        case ADD_USCALENDER_API_SUCCESS:
+            return {
+                ...state,
+                USCalenderAPI: action.payload,
             }
 
         case LOG_IN:
