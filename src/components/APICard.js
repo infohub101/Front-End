@@ -27,9 +27,9 @@ const APICard = props => {
     return (
         <Card>
             <CardBody>
-            <CardTitle>Title: {props.title}</CardTitle>
+            <CardTitle>{props.title}</CardTitle>
             <img className="img" src={props.img} alt="API Logo"/>
-            <CardTitle>Description: {props.description}</CardTitle>
+            <CardTitle>{props.description}</CardTitle>
             <br/>
             <CardSubtitle className="url">{props.url}</CardSubtitle>
             <br/>
