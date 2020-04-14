@@ -25,6 +25,8 @@ export const ADD_NEWS_API_START = 'ADD_NEWS_API_START';
 export const ADD_NEWS_API_SUCCESS = 'ADD_NEWS_API_SUCCESS';
 export const ADD_LOTTERY_API_START = 'ADD_LOTTERY_API_START';
 export const ADD_LOTTERY_API_SUCCESS = 'ADD_LOTTERY_API_SUCCESS';
+export const ADD_USCALENDER_API_START = 'ADD_USCALENDER_API_START';
+export const ADD_USCALENDER_API_SUCCESS = 'ADD_USCALENDER_API_SUCCESS';
 
 
 export const LOG_IN = 'LOG_IN';
@@ -137,6 +139,15 @@ export const getNewsAPI = url => dispatch => {
   axios
   .get(`${url}`)
   .then(res => { dispatch({ type: ADD_NEWS_API_SUCCESS, payload: res.data.articles }); })
+  .catch(err => console.log("GET API error",err));
+}
+
+// USCalender API
+export const getUSCalenderAPI = url => dispatch => {
+  dispatch({ type: ADD_USCALENDER_API_START });
+  axios
+  .get(`${url}`)
+  .then(res => { console.log("USCAL", res.data.response.holidays); dispatch({ type: ADD_USCALENDER_API_SUCCESS, payload: res.data.response.holidays }); })
   .catch(err => console.log("GET API error",err));
 }
 

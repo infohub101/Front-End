@@ -27,11 +27,10 @@ console.log("POSTADD", props)
         <Row>
             <Col md="4"></Col>
             <Col md="4">
-            <h2>Add Post</h2>
 
-            {/* News Category */}
-            <h2>News</h2>
-                {apiPost.filter(api => (api.category === 'News') && (!userPosts.some(up => up.title === api.title))).map(api => {
+            {/* Calender Category */}
+            <h2>Calender</h2>
+                {apiPost.filter(api => (api.category === 'Calender') && (!userPosts.some(up => up.title === api.title))).map(api => {
                 return <APICard
                         key = {api.id}
                         id = {api.id}
@@ -43,7 +42,7 @@ console.log("POSTADD", props)
                         url = {api.url}
                     />
                 })}
-            
+
             {/* Education Category */}
             <h2>Education</h2>
                 {apiPost.filter(api => (api.category === 'Education') && (!userPosts.some(up => up.title === api.title))).map(api => {
@@ -72,7 +71,23 @@ console.log("POSTADD", props)
                         img = {api.img}
                         url = {api.url}
                     />
-                })}               
+                })}   
+
+                {/* News Category */}
+                <h2>News</h2>
+                    {apiPost.filter(api => (api.category === 'News') && (!userPosts.some(up => up.title === api.title))).map(api => {
+                    return <APICard
+                        key = {api.id}
+                        id = {api.id}
+                        apiID = {api.api_id}
+                        category = {api.category}
+                        title = {api.title}
+                        description = {api.description}
+                        img = {api.img}
+                        url = {api.url}
+                        />
+                    })}
+                        
             <br/>
             <Button onClick={returnBack}>Go to Dashboard</Button>
             </Col>
