@@ -17,7 +17,7 @@ const PostAddAPI = props => {
 
     const returnBack = e => {
         e.preventDefault();
-        props.history.push('/profile');
+        props.history.push('/dashboard');
     }
 
     return(
@@ -102,7 +102,7 @@ const PostAddAPI = props => {
                     })}
                         
             <br/>
-            <Button onClick={returnBack}>Go Back</Button>
+            <Button onClick={returnBack}>Go to Dashboard</Button>
             </Col>
         </Row>
     )

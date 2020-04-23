@@ -4,7 +4,6 @@ import PrivateRoute from './utils/PrivateRoute';
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
-import Footer from "./components/Footer";
 import Dashboard from "./components/Dashboard";
 import PostAddAPI from './components/PostAddAPI';
 import Settings from './components/Settings';
@@ -23,7 +22,6 @@ function App() {
           <Route path='/update-settings' component={SettingsForm}/>
           <Route path='/' component={Registration}/>
         </Switch>
-     
       </div>
     </div>
   );
