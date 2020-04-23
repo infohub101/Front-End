@@ -21,6 +21,8 @@ export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 //Remote APIs
 export const ADD_NASA_API_START = 'ADD_NASA_API_START';
 export const ADD_NASA_API_SUCCESS = 'ADD_NASA_API_SUCCESS';
+export const ADD_MOVIE_API_START = 'ADD_MOVIE_API_START';
+export const ADD_MOVIE_API_SUCCESS = 'ADD_MOVIE_API_SUCCESS'
 export const ADD_NEWS_API_START = 'ADD_NEWS_API_START';
 export const ADD_NEWS_API_SUCCESS = 'ADD_NEWS_API_SUCCESS';
 export const ADD_LOTTERY_API_START = 'ADD_LOTTERY_API_START';
@@ -115,7 +117,7 @@ export const deleteUser = id => dispatch => {
     .catch(err => console.log("DELETE delete user error", err));
 }
 
-//Lottery API
+// Lottery API
 export const getLotteryAPI = url => dispatch => {
   dispatch({ type: ADD_LOTTERY_API_START });
   axios
@@ -124,12 +126,21 @@ export const getLotteryAPI = url => dispatch => {
   .catch(err => console.log("GET API error",err));
 }
 
+// Movie API
+export const getMovieAPI = url => dispatch => {
+  dispatch({ type: ADD_MOVIE_API_START });
+  axios
+  .get(`${url}`)
+  .then(res => { console.log("MOVIE API", res); dispatch({ type: ADD_MOVIE_API_SUCCESS, payload: res.data.results})})
+  .catch(err => console.log("GET API error",err));
+}
+
 // NASA API
 export const getNasaAPI = url => dispatch => {
   dispatch({ type: ADD_NASA_API_START });
   axios
   .get(`${url}`)
-  .then(res =>  { console.log("NASA GET response", typeof res.data);dispatch({ type: ADD_NASA_API_SUCCESS, payload: res.data }); })
+  .then(res =>  { dispatch({ type: ADD_NASA_API_SUCCESS, payload: res.data }); })
   .catch(err => console.log("GET API error",err));
 }
 

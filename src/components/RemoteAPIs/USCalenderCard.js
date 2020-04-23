@@ -22,6 +22,7 @@ export const USCalenderCard = props => {
                             <CardTitle>Date: {cal.date.iso}</CardTitle>
                             <CardTitle>Title: {cal.name}</CardTitle>
                             <CardTitle>Description: {cal.description}</CardTitle>
+                            <CardTitle>US State: {cal.locations}</CardTitle>
                         </CardBody>
                         </Card>
                     

@@ -16,6 +16,8 @@ import {
     //Remote API Actions
     ADD_NASA_API_START,
     ADD_NASA_API_SUCCESS, 
+    ADD_MOVIE_API_START,
+    ADD_MOVIE_API_SUCCESS,
     ADD_NEWS_API_START,
     ADD_NEWS_API_SUCCESS, 
     ADD_LOTTERY_API_START,
@@ -54,6 +56,7 @@ const initialState = {
             values: [{value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}, {value: ''}]
         }
     },
+    movieAPI: [],
     nasaAPI: {},
     newsAPI: [],
     USCalenderAPI: []
@@ -155,6 +158,15 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 lotteryAPI: action.payload,
             } 
+        case ADD_MOVIE_API_START:
+            return {
+                ...state,
+            }    
+        case ADD_MOVIE_API_SUCCESS:
+            return {
+                ...state,
+                movieAPI: action.payload,
+            }             
         case ADD_NASA_API_START:
             return {
                 ...state,

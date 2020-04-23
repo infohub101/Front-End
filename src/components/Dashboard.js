@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserPost, getLotteryAPI, getNasaAPI, getNewsAPI, getUSCalenderAPI } from "../actions";
+import { getUserPost, getLotteryAPI, getNasaAPI, getMovieAPI ,getNewsAPI, getUSCalenderAPI } from "../actions";
 import { LotteryCard } from "./RemoteAPIs/LotteryCard";
+import { MovieCard } from "./RemoteAPIs/MovieCard";
 import { NasaCard } from "./RemoteAPIs/NasaCard";
 import { NewsCard } from "./RemoteAPIs/NewsCard";
 import { USCalenderCard } from "./RemoteAPIs/USCalenderCard";
@@ -15,10 +16,10 @@ const Dashboard = () => {
 
     // APIs
     const lotteryAPI = useSelector(state => state.lotteryAPI);
+    const movieAPI = useSelector(state => state.movieAPI);
     const nasaAPI = useSelector(state => state.nasaAPI);
     const newsAPI = useSelector(state => state.newsAPI);
     const USCalenderAPI = useSelector(state => state.USCalenderAPI);
-    console.log('USCALLLLLL', USCalenderAPI)
 
     useEffect(() => {
         dispatch(getUserPost(userID));
@@ -26,8 +27,15 @@ const Dashboard = () => {
 
     // Lottery GET
     useEffect(() => {
-        userPosts.filter(posts => posts.api_id === "E1").map(userPosts => (
+        userPosts.filter(posts => posts.api_id === "G1").map(userPosts => (
             dispatch(getLotteryAPI(userPosts.url))
+        ))
+    },[userPosts])
+
+    // MOVIE GET
+    useEffect(() => {
+        userPosts.filter(posts => posts.api_id === "E1").map(userPosts => (
+            dispatch(getMovieAPI(userPosts.url))
         ))
     },[userPosts])
 
@@ -58,8 +66,13 @@ const Dashboard = () => {
             <Col className='main-container-body'>
                 <Row className='main-containter-menu-post'>
                     {/* Lottery API  */}
-                    {userPosts.filter(posts => posts.api_id === "E1").map(userPosts => {
+                    {userPosts.filter(posts => posts.api_id === "G1").map(userPosts => {
                         return <LotteryCard id = {userPosts.id} lotteryAPI = {lotteryAPI}/>
+                    })}
+
+                    {/* MOVIE API  */}
+                    {userPosts.filter(posts => posts.api_id === "E1").map(userPosts => {
+                        return <MovieCard id = {userPosts.id} key = {movieAPI.id} movieAPI = {movieAPI}/>
                     })}
 
                     {/* NASA API  */}

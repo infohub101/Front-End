@@ -5,7 +5,6 @@ import APICard from './APICard';
 import { Row, Col, Button } from 'reactstrap';
 
 const PostAddAPI = props => {
-console.log("POSTADD", props)
 
     const dispatch = useDispatch();
     const userPosts = useSelector(state => state.userPosts);
@@ -15,8 +14,6 @@ console.log("POSTADD", props)
         dispatch(getAPIData());
     }, [])
   
-    console.log("apiPost", apiPost);
-    console.log("userPosts", userPosts);
 
     const returnBack = e => {
         e.preventDefault();
@@ -71,7 +68,23 @@ console.log("POSTADD", props)
                         img = {api.img}
                         url = {api.url}
                     />
-                })}   
+                })}
+
+                
+             {/* Gambling Category */}
+             <h2>Entertainment</h2>
+                {apiPost.filter(api => (api.category === 'Gambling') && (!userPosts.some(up => up.title === api.title))).map(api => {
+                return <APICard
+                        key = {api.id}
+                        id = {api.id}
+                        apiID = {api.api_id}
+                        category = {api.category}
+                        title = {api.title}
+                        description = {api.description}
+                        img = {api.img}
+                        url = {api.url}
+                    />
+                })}     
 
                 {/* News Category */}
                 <h2>News</h2>
