@@ -5,7 +5,6 @@ import { addPostData } from '../actions';
 import { Card, CardTitle, CardBody, CardSubtitle, Button } from 'reactstrap';
 
 const APICard = props => {
-    console.log("props", props);
     const history = useHistory();
     const dispatch = useDispatch();
     const userID = window.localStorage.getItem('id');
@@ -31,7 +30,6 @@ const APICard = props => {
             <img className="img" src={props.img} alt="API Logo"/>
             <CardTitle>{props.description}</CardTitle>
             <br/>
-            <CardSubtitle className="url">{props.url}</CardSubtitle>
             <br/>
             <Button 
                 onClick = {handleSubmit}

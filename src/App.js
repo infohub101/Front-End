@@ -23,7 +23,7 @@ function App() {
           <Route path='/update-settings' component={SettingsForm}/>
           <Route path='/' component={Registration}/>
         </Switch>
-        <Footer />
+     
       </div>
     </div>
   );
