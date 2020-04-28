@@ -72,11 +72,7 @@ const Login = props => {
                                 autoComplete="off"
                             />
                         </FormGroup>
-
-                        <Button type="submit" onClick={login}>
-                            Submit
-                        </Button>
-                        <p><Link to="/registration">Sign Up</Link></p>
+                        <Button type="submit" onClick={login}>Submit</Button>
                     </Col>
                     <Col md=""></Col>
                 </Row>
