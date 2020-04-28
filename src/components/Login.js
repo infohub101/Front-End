@@ -25,7 +25,6 @@ const Login = props => {
                 "https://infohub101.herokuapp.com/api/auth/login", credentials
             )
             .then(res => {
-                console.log("login response", res);
                 window.localStorage.setItem("token", res.data.token);
                 window.localStorage.setItem("id", res.data.id);
                 props.history.push(`/dashboard/${res.data.hello}`);
