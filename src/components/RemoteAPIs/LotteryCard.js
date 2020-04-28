@@ -20,6 +20,7 @@ export const LotteryCard = props => {
     return (
         <Card>
             <Button onClick={handleDelete}>Delete API</Button>
+            <br/>
             <CardBody>
                 <img src= "https://s3.amazonaws.com/cdn.powerball.com/drupal/files/powerball-power-play-68px.png" alt = "Lottery Logo" />
                 <CardTitle>Current Jackpot Value: {formatter.format(props.lotteryAPI.prizes.values[0].value)}</CardTitle>

@@ -15,6 +15,7 @@ export const NewsCard = props => {
     return (
         <Card>
             <Button onClick={handleDelete}>Delete API</Button>
+            <br/>
             {props.newsAPI.map(news => {
                 return (
                     <Card key = {news.id}>

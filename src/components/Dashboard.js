@@ -7,6 +7,14 @@ import { NasaCard } from "./RemoteAPIs/NasaCard";
 import { NewsCard } from "./RemoteAPIs/NewsCard";
 import { USCalenderCard } from "./RemoteAPIs/USCalenderCard";
 import { Col, Row } from "reactstrap";
+import styled from 'styled-components'
+
+const DashBG = styled.div`
+  background-image: url("https://images.unsplash.com/photo-1489533119213-66a5cd877091?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;`
+
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -61,48 +69,50 @@ const Dashboard = () => {
     },[userPosts])
 
     return (
-        <Row className="main-container">
-            <Col sm = "1" md = "1" lg="1"/>
-            <Col className='main-container-body'>
-                <Row className='main-containter-menu-post'>
-                    <Col>
-                    {/* Lottery API  */}
-                    {userPosts.filter(posts => posts.api_id === "G1").map(userPosts => {
-                        return <LotteryCard key = {userPosts.id} id = {userPosts.id} lotteryAPI = {lotteryAPI}/>
-                    })}
-                    </Col>
+        <DashBG>
+            <Row className="main-container">
+                <Col sm = "1" md = "1" lg="1"/>
+                <Col className='main-container-body'>
+                    <Row className='main-containter-menu-post'>
+                        <Col>
+                        {/* Lottery API  */}
+                        {userPosts.filter(posts => posts.api_id === "G1").map(userPosts => {
+                            return <LotteryCard key = {userPosts.id} id = {userPosts.id} lotteryAPI = {lotteryAPI}/>
+                        })}
+                        </Col>
 
-                    <Col>
-                    {/* MOVIE API  */}
-                    {userPosts.filter(posts => posts.api_id === "E1").map(userPosts => {
-                        return <MovieCard key = {userPosts.id} id = {userPosts.id} movieAPI = {movieAPI}/>
-                    })}
-                    </Col>
+                        <Col>
+                        {/* MOVIE API  */}
+                        {userPosts.filter(posts => posts.api_id === "E1").map(userPosts => {
+                            return <MovieCard key = {userPosts.id} id = {userPosts.id} movieAPI = {movieAPI}/>
+                        })}
+                        </Col>
+                        
+                        <Col>
+                        {/* NASA API  */}
+                        {userPosts.filter(posts => posts.api_id === "Ed1").map(userPosts => {
+
+                        return <NasaCard key = {userPosts.id} id = {userPosts.id} nasaAPI = {nasaAPI}/>
+                        })}
+                        </Col>
+                        
+                        <Col>
+                        {/* News API  */}
+                        {userPosts.filter(posts => posts.api_id === "N1").map(userPosts => {
+                            return <NewsCard key = {userPosts.id} id = {userPosts.id} newsAPI = {newsAPI}/>
+                        })}
+
+                        {/* USCalender API  */}
+                        {userPosts.filter(posts => posts.api_id === "Cal1").map(userPosts => {
+                            return <USCalenderCard key = {userPosts.id} id = {userPosts.id} USCalenderAPI = {USCalenderAPI}/>
+                        })}
+                        </Col>
                     
-                    <Col>
-                    {/* NASA API  */}
-                    {userPosts.filter(posts => posts.api_id === "Ed1").map(userPosts => {
-
-                    return <NasaCard key = {userPosts.id} id = {userPosts.id} nasaAPI = {nasaAPI}/>
-                    })}
-                    </Col>
-                    
-                    <Col>
-                    {/* News API  */}
-                    {userPosts.filter(posts => posts.api_id === "N1").map(userPosts => {
-                        return <NewsCard key = {userPosts.id} id = {userPosts.id} newsAPI = {newsAPI}/>
-                    })}
-
-                    {/* USCalender API  */}
-                    {userPosts.filter(posts => posts.api_id === "Cal1").map(userPosts => {
-                        return <USCalenderCard key = {userPosts.id} id = {userPosts.id} USCalenderAPI = {USCalenderAPI}/>
-                    })}
-                    </Col>
-                   
-                </Row> 
-            </Col>
-            <Col sm = "1" md = "1" lg="1"/>
-        </Row>
+                    </Row> 
+                </Col>
+                <Col sm = "1" md = "1" lg="1"/>
+            </Row>
+        </DashBG>
     );
 };
 

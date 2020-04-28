@@ -14,6 +14,7 @@ export const MovieCard = props => {
     return (
         <Card>
             <Button onClick={handleDelete}>Delete API</Button>
+            <br/>
             {props.movieAPI.map(movies => {
                 return (
                     <CardBody key = {movies.id}>

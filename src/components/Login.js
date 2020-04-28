@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import styled from 'styled-components'
+
+const LogBG = styled.div`
+  background-image: url("https://images.unsplash.com/photo-1547044479-59ce6c0a784a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 75vh;
+  width: 100vw;`
 
 const initialCredentials = {
     username: "",
@@ -35,43 +43,45 @@ const Login = props => {
     };
 
     return (
-        <Form>
-            <Row>
-                <Col md="4"></Col>
-                <Col md="4">
-                    <FormGroup>
-                        <Label>Username</Label>
-                        <Input
-                            required
-                            id="username"
-                            name="username"
-                            type="text"
-                            value={credentials.username}
-                            onChange={handleChange}
-                            autoComplete="off"
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Password</Label>
-                        <Input
-                            required
-                            id="password"
-                            name="password"
-                            type="password"
-                            value={credentials.password}
-                            onChange={handleChange}
-                            autoComplete="off"
-                        />
-                    </FormGroup>
+        <LogBG>
+            <Form>
+                <Row>
+                    <Col md="4"></Col>
+                    <Col md="4">
+                        <FormGroup>
+                            <Label>Username</Label>
+                            <Input
+                                required
+                                id="username"
+                                name="username"
+                                type="text"
+                                value={credentials.username}
+                                onChange={handleChange}
+                                autoComplete="off"
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label>Password</Label>
+                            <Input
+                                required
+                                id="password"
+                                name="password"
+                                type="password"
+                                value={credentials.password}
+                                onChange={handleChange}
+                                autoComplete="off"
+                            />
+                        </FormGroup>
 
-                    <Button type="submit" onClick={login}>
-                        Submit
-                    </Button>
-                    <p><Link to="/registration">Sign Up</Link></p>
-                </Col>
-                <Col md=""></Col>
-            </Row>
-        </Form>
+                        <Button type="submit" onClick={login}>
+                            Submit
+                        </Button>
+                        <p><Link to="/registration">Sign Up</Link></p>
+                    </Col>
+                    <Col md=""></Col>
+                </Row>
+            </Form>
+        </LogBG>
     );
 };
 
