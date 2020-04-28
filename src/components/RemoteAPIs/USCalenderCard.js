@@ -15,6 +15,7 @@ export const USCalenderCard = props => {
     return (
         <Card>
             <Button onClick={handleDelete}>Delete API</Button>
+            <br/>
             {props.USCalenderAPI.map(cal => {
                 return (
                     <Card key = {cal.id}>

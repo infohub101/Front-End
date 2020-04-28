@@ -2,7 +2,12 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { addPostData } from '../actions';
-import { Card, CardTitle, CardBody, CardSubtitle, Button } from 'reactstrap';
+import { Card, CardHeader, CardTitle, CardBody, CardImg, CardSubtitle, Button } from 'reactstrap';
+import styled from 'styled-components'
+
+const HELLO = styled.div`
+
+`
 
 const APICard = props => {
     const history = useHistory();
@@ -26,14 +31,13 @@ const APICard = props => {
     return (
         <Card>
             <CardBody>
-            <CardTitle>{props.title}</CardTitle>
-            <img className="img" src={props.img} alt="API Logo"/>
-            <CardTitle>{props.description}</CardTitle>
+            <CardHeader  tag="h4">{props.title}</CardHeader>
             <br/>
+            <img src={props.img} alt="API Logo"/>
+            <br/><br/>
+            <CardSubtitle><b>{props.description}</b></CardSubtitle>
             <br/>
-            <Button onClick = {handleSubmit}>
-                Add API
-            </Button>
+            <Button onClick = {handleSubmit}>Add API</Button>
             </CardBody>
         </Card>
     );

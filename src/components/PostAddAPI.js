@@ -39,6 +39,7 @@ const PostAddAPI = props => {
                         url = {api.url}
                     />
                 })}
+                <br/>
 
             {/* Education Category */}
             <h2>Education</h2>
@@ -54,6 +55,7 @@ const PostAddAPI = props => {
                         url = {api.url}
                     />
                 })}
+                <br/>
 
              {/* Entertainment Category */}
              <h2>Entertainment</h2>
@@ -69,6 +71,7 @@ const PostAddAPI = props => {
                         url = {api.url}
                     />
                 })}
+                <br/>
 
                 
              {/* Gambling Category */}
@@ -84,7 +87,8 @@ const PostAddAPI = props => {
                         img = {api.img}
                         url = {api.url}
                     />
-                })}     
+                })}
+                <br/>
 
                 {/* News Category */}
                 <h2>News</h2>
@@ -100,9 +104,7 @@ const PostAddAPI = props => {
                         url = {api.url}
                         />
                     })}
-                        
-            <br/>
-            <Button onClick={returnBack}>Go to Dashboard</Button>
+                    <br/>    
             </Col>
         </Row>
     )

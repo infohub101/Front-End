@@ -3,6 +3,14 @@ import useForm from "../hooks/useForm";
 import validate from "../utils/validateRegister";
 import axios from "axios";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import styled from 'styled-components'
+
+const RegBG = styled.div`
+  background-image: url("https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 75vh;
+  width: 100vw;`
 
 const Registration = props => {
     const { handleChange, handleSubmit, values, errors } = useForm(
@@ -24,6 +32,7 @@ const Registration = props => {
             )
 
             .then(res => {
+                console.log("registration post response", res);
                 props.history.push("/login");
             })
             .catch(error => {
@@ -32,70 +41,72 @@ const Registration = props => {
     }
 
     return (
-        <Form onSubmit={handleSubmit} noValidate>
-            <Row>
-                <Col md="4" sm="4" xs="4"></Col>
-                <Col md="4" sm="4" xs="4">
-                    <FormGroup>
-                        <Label>Username</Label>
-                        <Input
-                            name="username"
-                            type="text"
-                            placeholder="username"
-                            value={values.username}
-                            onChange={handleChange}
-                        />
-                        {errors.username && <p className="error">{errors.username}</p>}
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Password</Label>
-                        <Input
-                            name="password"
-                            type="password"
-                            placeholder="password"
-                            values={values.password}
-                            onChange={handleChange}
-                        />
-                        {errors.password && <p className="error">{errors.password}</p>}
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>First Name</Label>
-                        <Input
-                            name="first_name"
-                            type="text"
-                            placeholder="first name"
-                            values={values.first_name}
-                            onChange={handleChange}
-                        />
-                        {errors.first_name && <p className="error">{errors.first_name}</p>}
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Last Name</Label>
-                        <Input
-                            name="last_name"
-                            type="text"
-                            placeholder="last name"
-                            values={values.last_name}
-                            onChange={handleChange}
-                        />
-                        {errors.last_name && <p className="error">{errors.last_name}</p>}
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Email</Label>
-                        <Input
-                            name="email"
-                            type="email"
-                            placeholder="email"
-                            values={values.email}
-                            onChange={handleChange}
-                        />
-                        {errors.email && <p className="error">{errors.email}</p>}
-                    </FormGroup>
-                    <Button type="submit">Submit</Button>
-                </Col>
-                <Col md="4" sm="4" xs="4"></Col>
-            </Row>
-        </Form>
+        <RegBG>
+            <Form onSubmit={handleSubmit} noValidate>
+                <Row>
+                    <Col md="4" sm="4" xs="4"></Col>
+                    <Col md="4" sm="4" xs="4">
+                        <FormGroup>
+                            <Label>Username</Label>
+                            <Input
+                                name="username"
+                                type="text"
+                                placeholder="username"
+                                value={values.username}
+                                onChange={handleChange}
+                            />
+                            {errors.username && <p className="error">{errors.username}</p>}
+                        </FormGroup>
+                        <FormGroup>
+                            <Label>Password</Label>
+                            <Input
+                                name="password"
+                                type="password"
+                                placeholder="password"
+                                values={values.password}
+                                onChange={handleChange}
+                            />
+                            {errors.password && <p className="error">{errors.password}</p>}
+                        </FormGroup>
+                        <FormGroup>
+                            <Label>First Name</Label>
+                            <Input
+                                name="first_name"
+                                type="text"
+                                placeholder="first name"
+                                values={values.first_name}
+                                onChange={handleChange}
+                            />
+                            {errors.first_name && <p className="error">{errors.first_name}</p>}
+                        </FormGroup>
+                        <FormGroup>
+                            <Label>Last Name</Label>
+                            <Input
+                                name="last_name"
+                                type="text"
+                                placeholder="last name"
+                                values={values.last_name}
+                                onChange={handleChange}
+                            />
+                            {errors.last_name && <p className="error">{errors.last_name}</p>}
+                        </FormGroup>
+                        <FormGroup>
+                            <Label>Email</Label>
+                            <Input
+                                name="email"
+                                type="email"
+                                placeholder="email"
+                                values={values.email}
+                                onChange={handleChange}
+                            />
+                            {errors.email && <p className="error">{errors.email}</p>}
+                        </FormGroup>
+                        <Button type="submit">Submit</Button>
+                    </Col>
+                    <Col md="4" sm="4" xs="4"></Col>
+                </Row>
+            </Form>
+        </RegBG>
     );
 };
 
