@@ -72,7 +72,7 @@ const PostAddAPI = props => {
 
                 
              {/* Gambling Category */}
-             <h2>Entertainment</h2>
+             <h2>Gambling</h2>
                 {apiPost.filter(api => (api.category === 'Gambling') && (!userPosts.some(up => up.title === api.title))).map(api => {
                 return <APICard
                         key = {api.id}

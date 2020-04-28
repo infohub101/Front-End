@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deletePost } from '../../actions';
-import { Card, CardTitle, CardBody, Button } from 'reactstrap';
+import { Card, CardTitle, CardBody, CardText, CardHeader, Button } from 'reactstrap';
 
 export const NewsCard = props => {
     console.log("NewsCard props", props)
@@ -18,9 +18,9 @@ export const NewsCard = props => {
                 {props.newsAPI.map(news => {
                     return (
                         <Card>
+                            <CardHeader>{news.title}</CardHeader>
                         <CardBody>
-                            <CardTitle>Title: {news.title}</CardTitle>
-                            <CardTitle>Description: {news.description}</CardTitle>
+                            <CardText>{news.description}</CardText>
                         </CardBody>
                         </Card>
                     

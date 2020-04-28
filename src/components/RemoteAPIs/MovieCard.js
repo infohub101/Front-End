@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deletePost } from '../../actions';
-import { Card, CardTitle, CardBody, Button } from 'reactstrap';
+import { Card, CardTitle, CardBody, CardHeader, Button } from 'reactstrap';
 
 export const MovieCard = props => {
     console.log("MOVIECARD", props)
@@ -18,9 +18,9 @@ export const MovieCard = props => {
         {props.movieAPI.map(movies => {
             return (
                 <Card>
+                    <CardHeader>{movies.title}</CardHeader>
                 <CardBody>
                 {<img src = {`https://image.tmdb.org/t/p/w300${movies.poster_path}`} alt = "Movie Image" />}  
-                <CardTitle>Title: {movies.title}</CardTitle>
                 <CardTitle>Release Date: {movies.release_date}</CardTitle>
                 <CardTitle>Description: {movies.overview}</CardTitle>
                 </CardBody>

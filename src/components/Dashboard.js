@@ -62,37 +62,46 @@ const Dashboard = () => {
 
     return (
         <Row className="main-container">
-            <Col/>
+            <Col sm = "1" md = "1" lg="1"/>
             <Col className='main-container-body'>
                 <Row className='main-containter-menu-post'>
+                    <Col>
                     {/* Lottery API  */}
                     {userPosts.filter(posts => posts.api_id === "G1").map(userPosts => {
                         return <LotteryCard id = {userPosts.id} lotteryAPI = {lotteryAPI}/>
                     })}
+                    </Col>
 
+                    <Col>
                     {/* MOVIE API  */}
                     {userPosts.filter(posts => posts.api_id === "E1").map(userPosts => {
                         return <MovieCard id = {userPosts.id} key = {movieAPI.id} movieAPI = {movieAPI}/>
                     })}
-
+                    </Col>
+                    
+                    <Col>
                     {/* NASA API  */}
                     {userPosts.filter(posts => posts.api_id === "Ed1").map(userPosts => {
-
                     return <NasaCard id = {userPosts.id} nasaAPI = {nasaAPI}/>
                     })}
-
+                    </Col>
+                    
+                    <Col>
                     {/* News API  */}
                     {userPosts.filter(posts => posts.api_id === "N1").map(userPosts => {
                         return <NewsCard id = {userPosts.id} key = {newsAPI.id} newsAPI = {newsAPI}/>
-                    })}
-
+                    })}</Col>
+                    
+                    <Col>
                     {/* USCalender API  */}
                     {userPosts.filter(posts => posts.api_id === "Cal1").map(userPosts => {
                         return <USCalenderCard id = {userPosts.id} key = {USCalenderAPI.id} USCalenderAPI = {USCalenderAPI}/>
                     })}
+                    </Col>
+                   
                 </Row> 
             </Col>
-            <Col/>
+            <Col sm = "1" md = "1" lg="1"/>
         </Row>
     );
 };
