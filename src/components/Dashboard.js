@@ -82,28 +82,17 @@ const Dashboard = () => {
                     <Col>
                     {/* NASA API  */}
                     {userPosts.filter(posts => posts.api_id === "Ed1").map(userPosts => {
-<<<<<<< HEAD
-                    return <NasaCard id = {userPosts.id} nasaAPI = {nasaAPI}/>
-=======
 
                     return <NasaCard key = {userPosts.id} id = {userPosts.id} nasaAPI = {nasaAPI}/>
->>>>>>> 786d0e7b992586ac073e6b93cd2c1433d90180e9
                     })}
                     </Col>
                     
                     <Col>
                     {/* News API  */}
                     {userPosts.filter(posts => posts.api_id === "N1").map(userPosts => {
-<<<<<<< HEAD
-                        return <NewsCard id = {userPosts.id} key = {newsAPI.id} newsAPI = {newsAPI}/>
-                    })}</Col>
-                    
-                    <Col>
-=======
                         return <NewsCard key = {userPosts.id} id = {userPosts.id} newsAPI = {newsAPI}/>
                     })}
 
->>>>>>> 786d0e7b992586ac073e6b93cd2c1433d90180e9
                     {/* USCalender API  */}
                     {userPosts.filter(posts => posts.api_id === "Cal1").map(userPosts => {
                         return <USCalenderCard key = {userPosts.id} id = {userPosts.id} USCalenderAPI = {USCalenderAPI}/>

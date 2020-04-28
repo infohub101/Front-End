@@ -12,20 +12,6 @@ export const MovieCard = props => {
     }
 
     return (
-<<<<<<< HEAD
-        <div>
-        {props.movieAPI.map(movies => {
-            return (
-                <Card>
-                    <CardHeader>{movies.title}</CardHeader>
-                <CardBody>
-                {<img src = {`https://image.tmdb.org/t/p/w300${movies.poster_path}`} alt = "Movie Image" />}  
-                <CardTitle>Release Date: {movies.release_date}</CardTitle>
-                <CardTitle>Description: {movies.overview}</CardTitle>
-                </CardBody>
-                </Card>
-            
-=======
         <Card>
             <Button onClick={handleDelete}>Delete API</Button>
             {props.movieAPI.map(movies => {
@@ -37,7 +23,6 @@ export const MovieCard = props => {
                     <CardTitle>Description: {movies.overview}</CardTitle>
                     </CardBody>
             )})}
->>>>>>> 786d0e7b992586ac073e6b93cd2c1433d90180e9
 
         </Card>
     );
