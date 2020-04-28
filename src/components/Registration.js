@@ -24,7 +24,6 @@ const Registration = props => {
             )
 
             .then(res => {
-                console.log("registration post response", res);
                 props.history.push("/login");
             })
             .catch(error => {

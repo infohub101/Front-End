@@ -4,7 +4,6 @@ import { deletePost } from '../../actions';
 import { Card, CardTitle, CardBody, Button } from 'reactstrap';
 
 export const NewsCard = props => {
-    console.log("NewsCard props", props)
 
     const dispatch = useDispatch();
     
@@ -14,19 +13,17 @@ export const NewsCard = props => {
     }
 
     return (
-            <div>
-                {props.newsAPI.map(news => {
-                    return (
-                        <Card>
+        <Card>
+            <Button onClick={handleDelete}>Delete API</Button>
+            {props.newsAPI.map(news => {
+                return (
+                    <Card key = {news.id}>
                         <CardBody>
-                            <CardTitle>Title: {news.title}</CardTitle>
-                            <CardTitle>Description: {news.description}</CardTitle>
+                            <CardTitle> <b>{news.title}</b> </CardTitle>
+                            <CardTitle> <a href={news.url} style={{color: "navy"}} target="_blank">{news.description}</a> </CardTitle>
                         </CardBody>
-                        </Card>
-                    
-
-                )})}
-                <Button onClick={handleDelete}>Delete API</Button>
-                </div>
+                    </Card>
+            )})}
+        </Card>
     );
 };

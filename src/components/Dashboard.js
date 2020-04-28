@@ -67,28 +67,28 @@ const Dashboard = () => {
                 <Row className='main-containter-menu-post'>
                     {/* Lottery API  */}
                     {userPosts.filter(posts => posts.api_id === "G1").map(userPosts => {
-                        return <LotteryCard id = {userPosts.id} lotteryAPI = {lotteryAPI}/>
+                        return <LotteryCard key = {userPosts.id} id = {userPosts.id} lotteryAPI = {lotteryAPI}/>
                     })}
 
                     {/* MOVIE API  */}
                     {userPosts.filter(posts => posts.api_id === "E1").map(userPosts => {
-                        return <MovieCard id = {userPosts.id} key = {movieAPI.id} movieAPI = {movieAPI}/>
+                        return <MovieCard key = {userPosts.id} id = {userPosts.id} movieAPI = {movieAPI}/>
                     })}
 
                     {/* NASA API  */}
                     {userPosts.filter(posts => posts.api_id === "Ed1").map(userPosts => {
 
-                    return <NasaCard id = {userPosts.id} nasaAPI = {nasaAPI}/>
+                    return <NasaCard key = {userPosts.id} id = {userPosts.id} nasaAPI = {nasaAPI}/>
                     })}
 
                     {/* News API  */}
                     {userPosts.filter(posts => posts.api_id === "N1").map(userPosts => {
-                        return <NewsCard id = {userPosts.id} key = {newsAPI.id} newsAPI = {newsAPI}/>
+                        return <NewsCard key = {userPosts.id} id = {userPosts.id} newsAPI = {newsAPI}/>
                     })}
 
                     {/* USCalender API  */}
                     {userPosts.filter(posts => posts.api_id === "Cal1").map(userPosts => {
-                        return <USCalenderCard id = {userPosts.id} key = {USCalenderAPI.id} USCalenderAPI = {USCalenderAPI}/>
+                        return <USCalenderCard key = {userPosts.id} id = {userPosts.id} USCalenderAPI = {USCalenderAPI}/>
                     })}
                 </Row> 
             </Col>
