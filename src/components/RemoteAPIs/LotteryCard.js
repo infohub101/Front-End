@@ -4,7 +4,6 @@ import { deletePost } from '../../actions';
 import { Card, CardTitle, CardBody, Button } from 'reactstrap';
 
 export const LotteryCard = props => {
-    console.log("LotteryCard props", props)
 
     const dispatch = useDispatch();
     
@@ -20,6 +19,7 @@ export const LotteryCard = props => {
 
     return (
         <Card>
+            <Button onClick={handleDelete}>Delete API</Button>
             <CardBody>
                 <img src= "https://s3.amazonaws.com/cdn.powerball.com/drupal/files/powerball-power-play-68px.png" alt = "Lottery Logo" />
                 <CardTitle>Current Jackpot Value: {formatter.format(props.lotteryAPI.prizes.values[0].value)}</CardTitle>
@@ -34,7 +34,6 @@ export const LotteryCard = props => {
                                             
                 </CardTitle>
                 <CardTitle>Result Announce At: {props.lotteryAPI.resultsAnnouncedAt}</CardTitle>
-                <Button onClick={handleDelete}>Delete API</Button>
             </CardBody>
         </Card>
     );

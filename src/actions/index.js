@@ -44,7 +44,6 @@ export const getUserData = id => dispatch => {
   axiosWithAuth()
     .get(`/api/auth/userdatabase/${id}`)
     .then(res => {
-      console.log("getUserData GET response", res);
       dispatch({ type: GET_USER_SUCCESS, payload: res.data });
     })
     .catch(err => console.log("GET user res error",err));
@@ -55,7 +54,6 @@ export const getAPIData = () => dispatch => {
   axiosWithAuth()
     .get(`/api/auth/apidatabase`)
     .then(res => {
-      console.log("getAPIData GET response", res);
       dispatch({ type: GET_ALL_API_SUCCESS, payload: res.data });
     })
     .catch(err => console.log("GET all API res error",err));
@@ -66,7 +64,6 @@ export const getUserPost = id => dispatch => {
   axiosWithAuth()
     .get(`/api/auth/userdatabase/${id}/api`)
     .then(res => {
-      console.log("getUserPost GET response", res);
       dispatch({ type: GET_USER_POST_SUCCESS, payload: res.data });
     })
     .catch(err => console.log("GET user post error", err));
@@ -74,11 +71,9 @@ export const getUserPost = id => dispatch => {
 
 export const addPostData = userAPI => dispatch => {
   dispatch({ type: ADD_POST_START });
-  console.log("addpost userapi", userAPI);
   axiosWithAuth()
     .post(`/api/auth/userapidatabase`, userAPI)
     .then(res => {
-      console.log("addPostData POST response", res);
       dispatch({ type: ADD_POST_SUCCESS});
       })
       .catch(err => console.log("POST add post error", err));
@@ -100,7 +95,6 @@ export const deletePost = (id, userAPI) => dispatch => {
   axiosWithAuth()
     .delete(`/api/auth/userapidatabase/${id}`, userAPI)
     .then(res => {
-      console.log("deletePost DELETE response", res);
       dispatch({ type: DELETE_POST_SUCCESS });
     })
     .catch(err => console.log("DELETE delete post error", err));
@@ -111,7 +105,6 @@ export const deleteUser = id => dispatch => {
   axiosWithAuth()
     .delete(`/api/auth/userdatabase/${id}`)
     .then(res => {
-      console.log("deleteUser DELETE response", res);
       dispatch({ type: DELETE_USER_SUCCESS, payload: res.data});
     })
     .catch(err => console.log("DELETE delete user error", err));
@@ -131,7 +124,7 @@ export const getMovieAPI = url => dispatch => {
   dispatch({ type: ADD_MOVIE_API_START });
   axios
   .get(`${url}`)
-  .then(res => { console.log("MOVIE API", res); dispatch({ type: ADD_MOVIE_API_SUCCESS, payload: res.data.results})})
+  .then(res => { dispatch({ type: ADD_MOVIE_API_SUCCESS, payload: res.data.results })})
   .catch(err => console.log("GET API error",err));
 }
 
@@ -158,7 +151,7 @@ export const getUSCalenderAPI = url => dispatch => {
   dispatch({ type: ADD_USCALENDER_API_START });
   axios
   .get(`${url}`)
-  .then(res => { console.log("USCAL", res.data.response.holidays); dispatch({ type: ADD_USCALENDER_API_SUCCESS, payload: res.data.response.holidays }); })
+  .then(res => { dispatch({ type: ADD_USCALENDER_API_SUCCESS, payload: res.data.response.holidays }); })
   .catch(err => console.log("GET API error",err));
 }
 

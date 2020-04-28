@@ -4,7 +4,6 @@ import { deletePost } from '../../actions';
 import { Card, CardTitle, CardBody, Button } from 'reactstrap';
 
 export const USCalenderCard = props => {
-    console.log("USCalenderCard props", props)
 
     const dispatch = useDispatch();
     
@@ -14,21 +13,19 @@ export const USCalenderCard = props => {
     }
 
     return (
-            <div>
-                {props.USCalenderAPI.map(cal => {
-                    return (
-                        <Card>
+        <Card>
+            <Button onClick={handleDelete}>Delete API</Button>
+            {props.USCalenderAPI.map(cal => {
+                return (
+                    <Card key = {cal.id}>
                         <CardBody>
                             <CardTitle>Date: {cal.date.iso}</CardTitle>
                             <CardTitle>Title: {cal.name}</CardTitle>
                             <CardTitle>Description: {cal.description}</CardTitle>
                             <CardTitle>US State: {cal.locations}</CardTitle>
                         </CardBody>
-                        </Card>
-                    
-
-                )})}
-                <Button onClick={handleDelete}>Delete API</Button>
-                </div>
+                    </Card>
+            )})}
+        </Card>    
     );
 };

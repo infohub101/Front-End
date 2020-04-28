@@ -14,13 +14,13 @@ export const NasaCard = props => {
 
     return (
         <Card>
-        <CardBody>
-            <CardTitle>{props.nasaAPI.date}</CardTitle>
-            <CardTitle>{props.nasaAPI.title}</CardTitle>
-            {<img src = {props.nasaAPI.url} alt = "NASA Image" />}
-            <CardTitle>{props.nasaAPI.explanation}</CardTitle>
             <Button onClick={handleDelete}>Delete API</Button>
-        </CardBody>
+            <CardBody>
+                <CardTitle>{props.nasaAPI.date}</CardTitle>
+                <CardTitle>{props.nasaAPI.title}</CardTitle>
+                {<img src = {props.nasaAPI.url} alt = "NASA Image" />}
+                <CardTitle>{props.nasaAPI.explanation}</CardTitle>
+            </CardBody>
         </Card>
     );
 };
